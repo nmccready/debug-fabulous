@@ -10,11 +10,11 @@ Wrapper / Extension around [visionmedia's debug](https://github.com/visionmedia/
 This library essentially wraps two things:
 
 - [lazy-debug](https://github.com/apihlaja/lazy-debug) for easy namespace naming by files
-- [lazy-eval])(./src/lazy-eval.js) debug closure handling
+- [lazy-eval](./src/lazy-eval.js) debug closure handling
 
 ## Use
 
-For thorough usage see the [tests][./test] .
+For thorough usage see the [tests](./test).
 
 ## lazy-eval
 
