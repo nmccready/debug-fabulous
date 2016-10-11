@@ -23,8 +23,10 @@
     "object-assign": "4.1.0"
   },
   "devDependencies": {
+    "babel-eslint": "7.X",
     "chai": "3.X",
     "eslint": "3.X",
+    "hook-std": "0.X",
     "mocha": "3.X"
   }
 }

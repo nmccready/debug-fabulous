@@ -1,4 +1,7 @@
 {
+  "ecmaFeatures": {
+    "arrowFunctions": true
+  },
   "globals": {
     "expect": true,
     "describe": true,
@@ -8,5 +11,10 @@
   },
   "rules": {
         "no-unused-vars": ["error", { "vars": "all", "args": "after-used" }]
-    }
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parser": "babel-eslint"
 }

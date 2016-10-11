@@ -1,12 +1,12 @@
 var expect = require('chai').expect;
-hook = require('../utils/hook_stderr')
+hook = require('hook-std')
 
-describe('lazy-eval', function () {
+describe('lazy-eval', () => {
 
   var debug;
 
-  describe('enabled', function () {
-    before(function () {
+  describe('enabled', () => {
+    before(() => {
 
       debug = require('../../')();
       debug.save('enabled');
@@ -14,17 +14,17 @@ describe('lazy-eval', function () {
       debug = debug('enabled');
     })
 
-    it('handles functions', function () {
-      unhook = hook.setup(function(str){
+    it('handles functions', () => {
+      unhook = hook.stderr(str => {
         expect(str.match(/crap/)).to.be.ok;
         expect(str.match(/enabled/)).to.be.ok;
       });
-      debug(function(){return 'crap';});
+      debug(() => {return 'crap';});
       unhook();
     });
 
-    it('normal', function () {
-      unhook = hook.setup(function(str){
+    it('normal', () => {
+      unhook = hook.stderr(str => {
         expect(str.match(/crap/)).to.be.ok;
         expect(str.match(/enabled/)).to.be.ok;
       });
@@ -33,8 +33,8 @@ describe('lazy-eval', function () {
     });
   });
 
-  describe('disabled', function () {
-    before(function () {
+  describe('disabled', () => {
+    before(() => {
 
       debug = require('../../')();
       debug.save(null);
@@ -42,14 +42,14 @@ describe('lazy-eval', function () {
       debug = debug('disabled');
     })
 
-    it('handles functions', function () {
+    it('handles functions', () => {
       var called = false;
 
-      unhook = hook.setup(function(){
+      unhook = hook.stderr(() => {
         called = true;
       });
 
-      debug(function(){
+      debug(() => {
         called = true;
         return 'crap';
       });
@@ -57,10 +57,10 @@ describe('lazy-eval', function () {
       expect(called).to.not.be.ok;
     });
 
-    it('normal', function () {
+    it('normal', () => {
       var called = false;
 
-      unhook = hook.setup(function(){
+      unhook = hook.stderr(() => {
         called = true;
       });
 
