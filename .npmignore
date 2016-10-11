@@ -1,0 +1,10 @@
+.*
+test/
+*.json
+.gitignore
+travis.yml
+*.md
+src/
+node_modules/
+tmp/
+.versions
