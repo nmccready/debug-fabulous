@@ -1,12 +1,12 @@
 var expect = require('chai').expect;
 hook = require('hook-std')
 
-describe('lazy-eval', () => {
+describe('lazy-eval', function () {
 
   var debug;
 
-  describe('enabled', () => {
-    before(() => {
+  describe('enabled', function () {
+    before(function () {
 
       debug = require('../../')();
       debug.save('enabled');
@@ -14,17 +14,17 @@ describe('lazy-eval', () => {
       debug = debug('enabled');
     })
 
-    it('handles functions', () => {
-      unhook = hook.stderr(str => {
+    it('handles functions', function () {
+      unhook = hook.stderr(function (str) {
         expect(str.match(/crap/)).to.be.ok;
         expect(str.match(/enabled/)).to.be.ok;
       });
-      debug(() => {return 'crap';});
+      debug(function () {return 'crap';});
       unhook();
     });
 
-    it('normal', () => {
-      unhook = hook.stderr(str => {
+    it('normal', function () {
+      unhook = hook.stderr(function (str) {
         expect(str.match(/crap/)).to.be.ok;
         expect(str.match(/enabled/)).to.be.ok;
       });
@@ -33,8 +33,8 @@ describe('lazy-eval', () => {
     });
   });
 
-  describe('disabled', () => {
-    before(() => {
+  describe('disabled', function () {
+    before(function () {
 
       debug = require('../../')();
       debug.save(null);
@@ -42,14 +42,14 @@ describe('lazy-eval', () => {
       debug = debug('disabled');
     })
 
-    it('handles functions', () => {
+    it('handles functions', function () {
       var called = false;
 
-      unhook = hook.stderr(() => {
+      unhook = hook.stderr(function () {
         called = true;
       });
 
-      debug(() => {
+      debug(function () {
         called = true;
         return 'crap';
       });
@@ -57,10 +57,10 @@ describe('lazy-eval', () => {
       expect(called).to.not.be.ok;
     });
 
-    it('normal', () => {
+    it('normal', function () {
       var called = false;
 
-      unhook = hook.stderr(() => {
+      unhook = hook.stderr(function () {
         called = true;
       });
 

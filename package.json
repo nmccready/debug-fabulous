@@ -1,6 +1,6 @@
 {
   "name": "debug-fabulous",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "visionmedia debug extensions rolled into one",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "debug": "2.X",
-    "lazy-debug": "0.X",
+    "lazy-debug-legacy": "0.0.X",
     "object-assign": "4.1.0"
   },
   "devDependencies": {

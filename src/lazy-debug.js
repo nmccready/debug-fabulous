@@ -1,4 +1,4 @@
-var lazyDebug = require('lazy-debug');
+var lazyDebug = require('lazy-debug-legacy');
 
 function wrapLazy(debug){
   debug.get = lazyDebug.get;

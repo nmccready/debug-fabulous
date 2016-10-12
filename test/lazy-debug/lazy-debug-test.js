@@ -1,9 +1,8 @@
 var expect = require('chai').expect;
-var packageName = require('../../package.json').name;
 var path = require('path');
 var fileNamespace = path.basename(__filename).replace(path.extname(__filename), '')
 
-describe('lazy-debug', function () {
+describe('lazy-debug-legacy', function () {
 
   var lazyDebug = require('../../index.js')()
 
@@ -15,11 +14,11 @@ describe('lazy-debug', function () {
   describe('#getModuleDebugName(filename, submoduleName)', function () {
     it('gives debug name for file', function () {
       var name = lazyDebug.getModuleDebugName(__filename);
-      expect(name).to.equal(packageName + ':test:' + 'lazy-debug:' + fileNamespace);
+      expect(name).to.equal('test:' + 'lazy-debug:' + fileNamespace);
     });
     it('attaches submodule name if given', function () {
       var name = lazyDebug.getModuleDebugName(__filename, 'test2');
-      expect(name).to.equal(packageName + ':test:' + 'lazy-debug:' + fileNamespace + ':test2');
+      expect(name).to.equal('test:' + 'lazy-debug:' + fileNamespace + ':test2');
     });
   });
   describe('#configure', function () {
@@ -34,7 +33,7 @@ describe('lazy-debug', function () {
         }
       });
       var name = lazyDebug.getModuleDebugName(__filename);
-      expect(name).to.equal(packageName + ':' + 'lazy-debug:' + fileNamespace);
+      expect(name).to.equal('lazy-debug:' + fileNamespace);
     });
   });
 });
