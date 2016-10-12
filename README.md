@@ -9,7 +9,7 @@ Wrapper / Extension around [visionmedia's debug](https://github.com/visionmedia/
 
 This library essentially wraps two things:
 
-- [lazy-debug-legacy](https://github.com/nmccready/lazy-debug-legacy) for easy namespace naming by files
+- [lazy-debug-legacy](https://github.com/nmccready/lazy-debug) for easy namespace naming by files
 - [lazy-eval](./src/lazy-eval.js) debug closure handling
 
 ## Use
