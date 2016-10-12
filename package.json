@@ -1,6 +1,6 @@
 {
   "name": "debug-fabulous",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "visionmedia debug extensions rolled into one",
   "main": "index.js",
   "scripts": {
