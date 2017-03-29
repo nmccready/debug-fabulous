@@ -1,10 +1,11 @@
 {
   "name": "debug-fabulous",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "visionmedia debug extensions rolled into one",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./test/**/*test.js"
+    "mocha": "mocha $@",
+    "test": "mocha ./test/**/*test.js ./test/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,6 @@
   "license": "MIT",
   "dependencies": {
     "debug": "2.X",
-    "lazy-debug-legacy": "0.0.X",
     "object-assign": "4.1.0"
   },
   "devDependencies": {
