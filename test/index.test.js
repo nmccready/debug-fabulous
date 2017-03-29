@@ -7,11 +7,11 @@ describe('index / spawn', function () {
 
   describe('namespacing', function () {
     before(function () {
-      var origDebug = require('../src/debugFabFactory')();
+      var origDebug = require('..')();
       origDebug.save('root*');
       origDebug.enable(origDebug.load())
 
-      rootDbg = require('../')('root', origDebug);
+      rootDbg = require('../').spawnable('root', origDebug);
       // console.log(rootDbg);
     })
 
