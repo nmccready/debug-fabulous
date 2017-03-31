@@ -1,4 +1,4 @@
-# debug-fabulous [![NPM version][npm-image]][npm-url] [![build status][travis-image]][travis-url]
+## debug-fabulous [![NPM version][npm-image]][npm-url] [![build status][travis-image]][travis-url]
 
 ## Install
 `npm install --save debug-fabulous`
@@ -30,3 +30,8 @@ childDbg('small out'); // prints namespace:child small out
 var grandChildDbg = debug.spawn('grandChild'); // debugger in the namespace:child:grandChild
 grandChildDbg('small out'); // prints namespace:child:grandChild small out
 ```
+
+[npm-image]: https://img.shields.io/npm/v/debug-fabulous.svg
+[npm-url]: https://www.npmjs.com/package/debug-fabulous
+[travis-image]: https://img.shields.io/travis/nmccready/debug-fabulous.svg
+[travis-url]: https://travis-ci.org/nmccready/debug-fabulous
