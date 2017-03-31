@@ -1,4 +1,4 @@
-# debug-fabulous
+# debug-fabulous [![NPM version][npm-image]][npm-url] [![build status][travis-image]][travis-url]
 
 ## Install
 `npm install --save debug-fabulous`
