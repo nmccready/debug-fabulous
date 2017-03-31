@@ -63,62 +63,13 @@ assertion-error@^1.0.1:
   version "1.0.2"
   resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/assertion-error/-/assertion-error-1.0.2.tgz#13ca515d86206da0bac66e834dd397d87581094c"
 
-babel-code-frame@^6.16.0, babel-code-frame@^6.22.0:
+babel-code-frame@^6.16.0:
   version "6.22.0"
   resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/babel-code-frame/-/babel-code-frame-6.22.0.tgz#027620bee567a88c32561574e7fd0801d33118e4"
   dependencies:
     chalk "^1.1.0"
     esutils "^2.0.2"
     js-tokens "^3.0.0"
-
-babel-eslint@7.X:
-  version "7.2.1"
-  resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/babel-eslint/-/babel-eslint-7.2.1.tgz#079422eb73ba811e3ca0865ce87af29327f8c52f"
-  dependencies:
-    babel-code-frame "^6.22.0"
-    babel-traverse "^6.23.1"
-    babel-types "^6.23.0"
-    babylon "^6.16.1"
-
-babel-messages@^6.23.0:
-  version "6.23.0"
-  resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/babel-messages/-/babel-messages-6.23.0.tgz#f3cdf4703858035b2a2951c6ec5edf6c62f2630e"
-  dependencies:
-    babel-runtime "^6.22.0"
-
-babel-runtime@^6.22.0:
-  version "6.23.0"
-  resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/babel-runtime/-/babel-runtime-6.23.0.tgz#0a9489f144de70efb3ce4300accdb329e2fc543b"
-  dependencies:
-    core-js "^2.4.0"
-    regenerator-runtime "^0.10.0"
-
-babel-traverse@^6.23.1:
-  version "6.23.1"
-  resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/babel-traverse/-/babel-traverse-6.23.1.tgz#d3cb59010ecd06a97d81310065f966b699e14f48"
-  dependencies:
-    babel-code-frame "^6.22.0"
-    babel-messages "^6.23.0"
-    babel-runtime "^6.22.0"
-    babel-types "^6.23.0"
-    babylon "^6.15.0"
-    debug "^2.2.0"
-    globals "^9.0.0"
-    invariant "^2.2.0"
-    lodash "^4.2.0"
-
-babel-types@^6.23.0:
-  version "6.23.0"
-  resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/babel-types/-/babel-types-6.23.0.tgz#bb17179d7538bad38cd0c9e115d340f77e7e9acf"
-  dependencies:
-    babel-runtime "^6.22.0"
-    esutils "^2.0.2"
-    lodash "^4.2.0"
-    to-fast-properties "^1.0.1"
-
-babylon@^6.15.0, babylon@^6.16.1:
-  version "6.16.1"
-  resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/babylon/-/babylon-6.16.1.tgz#30c5a22f481978a9e7f8cdfdf496b11d94b404d3"
 
 balanced-match@^0.4.1:
   version "0.4.2"
@@ -207,10 +158,6 @@ concat-stream@^1.5.2:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
-core-js@^2.4.0:
-  version "2.4.1"
-  resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/core-js/-/core-js-2.4.1.tgz#4de911e667b0eae9124e34254b53aea6fc618d3e"
-
 core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
@@ -227,7 +174,7 @@ debug@2.2.0:
   dependencies:
     ms "0.7.1"
 
-debug@2.X, debug@^2.1.1, debug@^2.2.0:
+debug@2.X, debug@^2.1.1:
   version "2.6.3"
   resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/debug/-/debug-2.6.3.tgz#0f7eb8c30965ec08c72accfa0130c8b79984141d"
   dependencies:
@@ -459,7 +406,7 @@ generate-object-property@^1.1.0:
   dependencies:
     is-property "^1.0.0"
 
-glob@7.0.5, glob@^7.0.0, glob@^7.0.3, glob@^7.0.5:
+glob@7.0.5:
   version "7.0.5"
   resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/glob/-/glob-7.0.5.tgz#b4202a69099bbb4d292a7c1b95b6682b67ebdc95"
   dependencies:
@@ -470,7 +417,18 @@ glob@7.0.5, glob@^7.0.0, glob@^7.0.3, glob@^7.0.5:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-globals@^9.0.0, globals@^9.14.0:
+glob@^7.0.0, glob@^7.0.3, glob@^7.0.5:
+  version "7.1.1"
+  resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/glob/-/glob-7.1.1.tgz#805211df04faaf1c63a3600306cdf5ade50b2ec8"
+  dependencies:
+    fs.realpath "^1.0.0"
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "^3.0.2"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
+
+globals@^9.14.0:
   version "9.17.0"
   resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/globals/-/globals-9.17.0.tgz#0c0ca696d9b9bb694d2e5470bd37777caad50286"
 
@@ -551,12 +509,6 @@ inquirer@^0.12.0:
 interpret@^1.0.0:
   version "1.0.2"
   resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/interpret/-/interpret-1.0.2.tgz#f4f623f0bb7122f15f5717c8e254b8161b5c5b2d"
-
-invariant@^2.2.0:
-  version "2.2.2"
-  resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
-  dependencies:
-    loose-envify "^1.0.0"
 
 is-fullwidth-code-point@^1.0.0:
   version "1.0.0"
@@ -690,15 +642,9 @@ lodash.keys@^3.0.0:
     lodash.isarguments "^3.0.0"
     lodash.isarray "^3.0.0"
 
-lodash@^4.0.0, lodash@^4.2.0, lodash@^4.3.0:
+lodash@^4.0.0, lodash@^4.3.0:
   version "4.17.4"
   resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
-
-loose-envify@^1.0.0:
-  version "1.3.1"
-  resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/loose-envify/-/loose-envify-1.3.1.tgz#d1a8ad33fa9ce0e713d65fdd0ac8b748d478c848"
-  dependencies:
-    js-tokens "^3.0.0"
 
 minimatch@^3.0.2:
   version "3.0.3"
@@ -849,10 +795,6 @@ rechoir@^0.6.2:
   dependencies:
     resolve "^1.1.6"
 
-regenerator-runtime@^0.10.0:
-  version "0.10.3"
-  resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/regenerator-runtime/-/regenerator-runtime-0.10.3.tgz#8c4367a904b51ea62a908ac310bf99ff90a82a3e"
-
 require-uncached@^1.0.2:
   version "1.0.3"
   resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/require-uncached/-/require-uncached-1.0.3.tgz#4e0d56d6c9662fd31e43011c4b95aa49955421d3"
@@ -970,10 +912,6 @@ text-table@~0.2.0:
 through@^2.3.6:
   version "2.3.8"
   resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
-
-to-fast-properties@^1.0.1:
-  version "1.0.2"
-  resolved "https://artifacts.ua-ecm.com:443/artifactory/api/npm/ua-npm-master/to-fast-properties/-/to-fast-properties-1.0.2.tgz#f3f5c0c3ba7299a7ef99427e44633257ade43320"
 
 tryit@^1.0.1:
   version "1.0.3"

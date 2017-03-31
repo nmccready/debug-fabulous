@@ -8,6 +8,5 @@
     "browser": true,
     "node": true,
     "mocha": true
-  },
-  "parser": "babel-eslint"
+  }
 }
