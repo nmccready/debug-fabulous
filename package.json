@@ -4,8 +4,9 @@
   "description": "visionmedia debug extensions rolled into one",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint !./node_modules *.js ./**/*.js",
     "mocha": "mocha $@",
-    "test": "mocha ./test/**/*test.js ./test/*.test.js"
+    "test": "npm run lint && mocha ./test/**/*test.js ./test/*.test.js"
   },
   "repository": {
     "type": "git",

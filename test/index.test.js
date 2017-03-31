@@ -1,9 +1,10 @@
+'use strict';
 var expect = require('chai').expect;
-hook = require('hook-std')
+var hook = require('hook-std');
 
 describe('index / spawn', function () {
 
-  var rootDbg;
+  var rootDbg, unhook;
 
   describe('namespacing', function () {
     before(function () {
