@@ -17,3 +17,5 @@ build/
 npm-debug.log
 bower_components/
 .versions
+
+package-lock.json

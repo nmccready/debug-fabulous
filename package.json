@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint !./node_modules *.js ./**/*.js",
-    "mocha": "mocha $@",
+    "mocha": "mocha",
     "test": "npm run lint && mocha ./test/**/*test.js ./test/*.test.js"
   },
   "repository": {
@@ -20,13 +20,15 @@
   "author": "Nicholas McCready",
   "license": "MIT",
   "dependencies": {
-    "debug": "2.X",
+    "debug": "2.3.0",
+    "memoizee": "^0.4.5",
     "object-assign": "4.1.0"
   },
   "devDependencies": {
     "chai": "3.X",
     "eslint": "3.X",
     "hook-std": "0.X",
+    "memwatch-next": "^0.3.0",
     "mocha": "3.X"
   }
 }

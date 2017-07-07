@@ -1,13 +1,40 @@
 'use strict';
 var expect = require('chai').expect;
 var hook = require('hook-std');
+var memwatch = require('memwatch-next');
+
+memwatch.on('leak', function(info) {
+  console.log("LEAK");
+  console.log(info);
+  throw new Error("there is a LEAK");
+  process.exit(500);
+});
+
+var heapDiff = new memwatch.HeapDiff();
 
 describe('index / spawn', function () {
 
-  var rootDbg, unhook;
+  var rootDbg, unhook, date;
+
+  before(function(){
+    date = Date.now();
+  })
+
+  after(function(){
+    var hde = heapDiff.end();
+    var change = hde.change;
+    change.details = null;
+
+    console.log(JSON.stringify({
+      before: hde.before,
+      after: hde.after,
+      change: change
+    }, null, 2));
+    console.log("index.test.js Total time: " + (Date.now() - date));
+  })
 
   describe('namespacing', function () {
-    before(function () {
+    beforeEach(function () {
       var origDebug = require('..')();
       origDebug.save('root*');
       origDebug.enable(origDebug.load())
@@ -41,8 +68,8 @@ describe('index / spawn', function () {
     describe('child1', function(){
       var child1Dbg;
 
-      before(function () {
-        child1Dbg = rootDbg.spawn('child1')
+      beforeEach(function () {
+        child1Dbg = rootDbg.spawn('child1');
       })
 
       it('handles functions', function (done) {
@@ -66,6 +93,18 @@ describe('index / spawn', function () {
         child1Dbg('crap');
         unhook();
       });
+
+      it('leak', function () {
+        // memory leak attempt
+        for(var i = 0; i < 1000;i++){
+          child1Dbg = rootDbg.spawn('child1');
+          leakTest('leakTest' + i);
+        }
+      });
+
+      function leakTest(testName) {
+        child1Dbg(function () {return testName;});
+      }
 
       describe('grandChild1', function(){
         var grandChild1;

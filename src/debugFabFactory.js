@@ -1,13 +1,14 @@
-module.exports = function debugFactory(debugApi, options) {
+module.exports = function debugFactory(_debugApi, _options) {
   var wrapLazyEval = require('./lazy-eval');
   var formatArgs = require('./formatArgs');
 
-  options = options || {
+  var options = _options || {
     formatArgs: true
   };
 
-  debugApi = debugApi ? debugApi : require('debug');
+  var debugApi = _debugApi ? _debugApi : require('debug');
   debugApi = wrapLazyEval(debugApi);
+
   debugApi = formatArgs({
     debugApi: debugApi,
     options: options
