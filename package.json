@@ -27,6 +27,7 @@
     "chai": "3.X",
     "eslint": "3.X",
     "hook-std": "0.X",
+    "memwatch-next": "^0.3.0",
     "mocha": "3.X"
   }
 }

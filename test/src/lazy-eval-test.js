@@ -1,9 +1,17 @@
 var expect = require('chai').expect;
-hook = require('hook-std')
+var hook = require('hook-std');
+var memwatch = require('memwatch-next');
+
+memwatch.on('leak', function(info) {
+  console.log("LEAK");
+  console.log(info);
+  throw new Error("there is a LEAK");
+  process.exit(500);
+});
 
 describe('lazy-eval', function () {
 
-  var debug;
+  var debug, unhook;
 
   describe('enabled', function () {
     before(function () {
@@ -15,15 +23,22 @@ describe('lazy-eval', function () {
       // console.log(debug);
     })
 
-    it('handles functions', function (done) {
-      unhook = hook.stderr(function (str) {
-        expect(str.match(/crap/)).to.be.ok;
-        expect(str.match(/enabled/)).to.be.ok;
-        done()
+    function leakTest(testNum){
+      it('handles functions' + testNum, function (done) {
+        unhook = hook.stderr(function (str) {
+          expect(str.match(/crap/)).to.be.ok;
+          expect(str.match(/enabled/)).to.be.ok;
+          done()
+        });
+        debug(function () {return 'crap';});
+        unhook();
       });
-      debug(function () {return 'crap';});
-      unhook();
-    });
+    }
+
+    // memory leak attempt
+    for(var i = 0; i < 100;i++){
+      leakTest(i);
+    }
 
     it('normal', function (done) {
       unhook = hook.stderr(function (str) {

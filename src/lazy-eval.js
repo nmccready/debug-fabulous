@@ -1,7 +1,7 @@
 
 
-var slice = [].slice,
-  objectAssign = require('object-assign');
+var slice = [].slice;
+var objectAssign = require('object-assign');
 
 
 function _resolveOutput(func, bindThis) {
@@ -21,12 +21,12 @@ function _resolveOutput(func, bindThis) {
 };
 
 
-function wrapEval(debug) {
+function wrapEval(_debug) {
 
-  var debugOrig = debug,
-    noop = function(){};
+  var debugOrig = _debug;
+  var noop = function(){};
 
-  debug = function (namespace) {
+  function debug(namespace) {
 
     var instance = debugOrig(namespace);
 
