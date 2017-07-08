@@ -96,7 +96,7 @@ describe('index / spawn', function () {
 
       it('leak', function () {
         // memory leak attempt
-        for(var i = 0; i < 100000;i++){
+        for(var i = 0; i < 1000;i++){
           child1Dbg = rootDbg.spawn('child1');
           leakTest('leakTest' + i);
         }

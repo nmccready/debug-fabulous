@@ -54,7 +54,7 @@ describe('lazy-eval', function () {
 
     it('leak', function () {
       // memory leak attempt
-      for(var i = 0; i < 10000;i++){
+      for(var i = 0; i < 1000;i++){
         debug = debugFact('enabled');
         leakTest("leak" + i);
       }
