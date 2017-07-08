@@ -72,24 +72,6 @@ describe('index / spawn', function () {
         child1Dbg = rootDbg.spawn('child1');
       })
 
-      function leakTest(testName) {
-        it(testName, function (done) {
-          unhook = hook.stderr(function (str) {
-            expect(str).to.be.ok;
-            expect(str.match(/crap/)).to.be.ok;
-            expect(str.match(/root:child1/)).to.be.ok;
-            done()
-          });
-          child1Dbg(function () {return 'crap';});
-          unhook();
-        });
-      }
-
-      // memory leak attempt
-      for(var i = 0; i < 1000;i++){
-        leakTest('leakTest' + i);
-      }
-
       it('handles functions', function (done) {
         unhook = hook.stderr(function (str) {
           expect(str).to.be.ok;
@@ -111,6 +93,18 @@ describe('index / spawn', function () {
         child1Dbg('crap');
         unhook();
       });
+
+      it('leak', function () {
+        // memory leak attempt
+        for(var i = 0; i < 100000;i++){
+          child1Dbg = rootDbg.spawn('child1');
+          leakTest('leakTest' + i);
+        }
+      });
+
+      function leakTest(testName) {
+        child1Dbg(function () {return testName;});
+      }
 
       describe('grandChild1', function(){
         var grandChild1;

@@ -1,6 +1,7 @@
 var expect = require('chai').expect;
 var hook = require('hook-std');
 var memwatch = require('memwatch-next');
+var debugFact = require('../../src/debugFabFactory')();
 
 memwatch.on('leak', function(info) {
   console.log("LEAK");
@@ -34,30 +35,35 @@ describe('lazy-eval', function () {
 
   describe('enabled', function () {
     before(function () {
-
-      debug = require('../../src/debugFabFactory')();
-      debug.save('enabled');
-      debug.enable(debug.load())
-      debug = debug('enabled');
+      debugFact.save('enabled');
+      debugFact.enable(debugFact.load())
+      debug = debugFact('enabled');
       // console.log(debug);
     })
 
-    function leakTest(testNum){
-      it('handles functions' + testNum, function (done) {
-        unhook = hook.stderr(function (str) {
-          expect(str.match(/crap/)).to.be.ok;
-          expect(str.match(/enabled/)).to.be.ok;
-          done()
-        });
-        debug(function () {return 'crap';});
-        unhook();
+    it('handles functions', function (done) {
+      unhook = hook.stderr(function (str) {
+        expect(str.match(/crap/)).to.be.ok;
+        expect(str.match(/enabled/)).to.be.ok;
+        done()
       });
-    }
+      debug(function () {return 'crap';});
+      unhook();
+    });
 
-    // memory leak attempt
-    for(var i = 0; i < 1000;i++){
-      leakTest(i);
-    }
+
+    it('leak', function () {
+      // memory leak attempt
+      for(var i = 0; i < 10000;i++){
+        debug = debugFact('enabled');
+        leakTest("leak" + i);
+      }
+
+      function leakTest(name){
+        debug(function () {return name;});
+      }
+    });
+
 
     it('normal', function (done) {
       unhook = hook.stderr(function (str) {
@@ -72,11 +78,9 @@ describe('lazy-eval', function () {
 
   describe('disabled', function () {
     before(function () {
-
-      debug = require('../../src/debugFabFactory')();
-      debug.save(null);
-      debug.enable(debug.load())
-      debug = debug('disabled');
+      debugFact.save(null);
+      debugFact.enable(debugFact.load())
+      debug = debugFact('disabled');
     })
 
     it('handles functions', function () {
