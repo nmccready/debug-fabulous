@@ -10,14 +10,6 @@ memwatch.on('leak', function(info) {
   process.exit(500);
 });
 
-memwatch.on('gc', function(d) {
-  if (d.compacted) {
-    console.log('current base memory usage:', memwatch.stats().current_base);
-  }
-});
-
-memwatch.gc();
-
 var heapDiff = new memwatch.HeapDiff();
 
 describe('index / spawn', function () {

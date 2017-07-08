@@ -1,4 +1,5 @@
 function spawnFactory(_namespace, _debugFabFactory) {
+  var memoize = require('memoizee');
   var namespace = _namespace || '';
   var debugFabFactory = _debugFabFactory;
 
@@ -22,6 +23,8 @@ function spawnFactory(_namespace, _debugFabFactory) {
 
     return dbg.debug;
   };
+
+  Debugger.prototype.spawn = memoize(Debugger.prototype.spawn);
 
   var rootDebug = (new Debugger(namespace)).debug;
 

@@ -9,9 +9,28 @@ memwatch.on('leak', function(info) {
   process.exit(500);
 });
 
+var heapDiff = new memwatch.HeapDiff();
+
 describe('lazy-eval', function () {
 
-  var debug, unhook;
+  var debug, unhook, date;
+
+  before(function(){
+    date = Date.now();
+  })
+
+  after(function(){
+    var hde = heapDiff.end();
+    var change = hde.change;
+    change.details = null;
+
+    console.log(JSON.stringify({
+      before: hde.before,
+      after: hde.after,
+      change: change
+    }, null, 2));
+    console.log("lazy-eval-test.js Total time: " + (Date.now() - date));
+  })
 
   describe('enabled', function () {
     before(function () {
@@ -36,7 +55,7 @@ describe('lazy-eval', function () {
     }
 
     // memory leak attempt
-    for(var i = 0; i < 100;i++){
+    for(var i = 0; i < 1000;i++){
       leakTest(i);
     }
 
