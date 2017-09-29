@@ -1,6 +1,6 @@
 {
   "name": "debug-fabulous",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "visionmedia debug extensions rolled into one",
   "main": "index.js",
   "scripts": {
@@ -20,15 +20,15 @@
   "author": "Nicholas McCready",
   "license": "MIT",
   "dependencies": {
-    "debug": "2.3.0",
-    "memoizee": "^0.4.5",
-    "object-assign": "4.1.0"
+    "debug": "^2.6.9",
+    "memoizee": "0.4.X",
+    "object-assign": "4.X"
   },
   "devDependencies": {
     "chai": "3.X",
     "eslint": "3.X",
     "hook-std": "0.X",
-    "memwatch-next": "^0.3.0",
+    "memwatch-next": "0.3.X",
     "mocha": "3.X"
   }
 }
