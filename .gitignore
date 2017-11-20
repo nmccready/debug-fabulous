@@ -19,3 +19,4 @@ bower_components/
 .versions
 
 package-lock.json
+crashes.json
