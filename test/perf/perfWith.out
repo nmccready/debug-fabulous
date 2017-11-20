@@ -1,0 +1,46 @@
+❯ time (for i in $(seq 1 20); do node ./test/perf/perfWith.js; done);
+change.size: 54.88 kb
+perfWithout.js Total time: 1949.525 ms
+change.size: 48.9 kb
+perfWithout.js Total time: 1937.087 ms
+change.size: 49.85 kb
+perfWithout.js Total time: 1925.757 ms
+change.size: 57.78 kb
+perfWithout.js Total time: 1914.3200000000002 ms
+change.size: 55.46 kb
+perfWithout.js Total time: 1936.4769999999999 ms
+change.size: 53.76 kb
+perfWithout.js Total time: 1921.262 ms
+change.size: 53.45 kb
+perfWithout.js Total time: 2003.621 ms
+change.size: 54.95 kb
+perfWithout.js Total time: 1914.387 ms
+change.size: 52.57 kb
+perfWithout.js Total time: 1990.955 ms
+change.size: 55.13 kb
+perfWithout.js Total time: 1909.8899999999999 ms
+change.size: 58.48 kb
+perfWithout.js Total time: 1931.453 ms
+change.size: 55.6 kb
+perfWithout.js Total time: 1904.1219999999998 ms
+change.size: 55.22 kb
+perfWithout.js Total time: 2005.619 ms
+change.size: 49.35 kb
+perfWithout.js Total time: 1872.238 ms
+change.size: 52.37 kb
+perfWithout.js Total time: 1883.594 ms
+change.size: 53.68 kb
+perfWithout.js Total time: 1868.738 ms
+change.size: 55.4 kb
+perfWithout.js Total time: 1876.004 ms
+change.size: 54.84 kb
+perfWithout.js Total time: 1873.001 ms
+change.size: 54.95 kb
+perfWithout.js Total time: 1861.063 ms
+change.size: 56.5 kb
+perfWithout.js Total time: 1882.318 ms
+( for i in $(seq 1 20); do; node ./test/perf/perfWith.js; done; )  37.24s user 4.27s system 100% cpu 41.197 total
+
+❯ node
+>  37.24 / 20
+1.862 s avg
