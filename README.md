@@ -1,17 +1,29 @@
-## debug-fabulous [![NPM version][npm-image]][npm-url] [![build status][travis-image]][travis-url]
+# debug-fabulous [![NPM version][npm-image]][npm-url] [![build status][travis-image]][travis-url]
 
 ## Install
+
 `npm install --save debug-fabulous`
 
-# Purpose
+## Purpose:
 
 Wrapper / Extension around [visionmedia's debug](https://github.com/visionmedia/debug) to allow lazy evaluation of debugging via closure handling.
 
-This library essentially wraps two things:
+## Why would I consider using this library?
+
+One on the main utilities added to this library is lazy log level evaluation. This allows whatever log strings to only be created and evaluated if a log level is active. This can considerably reduce the amount of memory used in logging when you are not using.
+
+This is important as this results in no-excuse for not using logging in your applications for performance reasons.
+
+### Proof
+
+For analysis of the performance results are in [perfWith.out](./test/perf/perfWith.out) and [perfWithout.out](./test/perf/perfWithout.out).
+
+In summary, the tests using this library are using 3 times less memory for the same logging statements (when the log levels are disabled).
+
+## This library essentially wraps two things:
 
 - [lazy-eval](./src/lazy-eval.js): debug closure handling
 - [spawn](./src/spawn.js): spawns off existing namespaces for a sub namespace.
-
 
 ## Example:
 
@@ -23,7 +35,8 @@ var debug = require('')();
 // debug.save('namespace');
 // debug.enable(debug.load())
 debug = debug('namespace'); // debugger in the namespace
-debug(function(){return 'ya something to log' + someLargeHarryString;});
+debug(function(){return 'something to log' + someLargeHarryString;});
+debug(() => 'something to log ${someLargeHarryString}');
 debug('small out'); // prints namespace small out
 var childDbg = debug.spawn('child'); // debugger in the namespace:child
 childDbg('small out'); // prints namespace:child small out
