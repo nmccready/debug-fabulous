@@ -3,6 +3,7 @@ sudo: false
 language: node_js
 
 node_js:
+  - 8 
   - 6
   - 4
 
@@ -10,9 +11,7 @@ cache:
   directories:
     - node_modules
 
-install:
-  - npm i -g npm@latest
-  - npm install
+cache: yarn
 
 branches:
   except:
