@@ -10,6 +10,9 @@ node_js:
   - 6
   - 4
 
+test:
+  - yarn test
+
 cache:
   yarn: true
   directories:
