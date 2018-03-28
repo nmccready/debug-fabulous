@@ -8,6 +8,34 @@ origDebug.enable(origDebug.load());
 var debug = debugFabAPI.spawnable('root', origDebug);
 
 describe('spawn', function() {
+  describe('namespaces same level identical', function() {
+    it('2 off', function() {
+      var child1 = debug.spawn('child1');
+      var child2 = debug.spawn('child1');
+
+      expect(child1).to.equal(child2);
+      expect(child1.namespace).to.eql(child2.namespace);
+      expect(child1.namespace).to.eql('root:child1');
+    });
+
+    it('grandchildren', function() {
+      var child1 = debug.spawn('child1').spawn('grand');
+      var child2 = debug.spawn('child1').spawn('grand');
+
+      expect(child1).to.equal(child2);
+      expect(child1.namespace).to.eql(child2.namespace);
+      expect(child1.namespace).to.eql('root:child1:grand');
+    });
+
+    it('great', function() {
+      var child1 = debug.spawn('child1').spawn('grand').spawn('great');
+      var child2 = debug.spawn('child1').spawn('grand').spawn('great');
+
+      expect(child1).to.equal(child2);
+      expect(child1.namespace).to.eql(child2.namespace);
+      expect(child1.namespace).to.eql('root:child1:grand:great');
+    });
+  });
   describe('namespaces are unique', function() {
     it('1 off', function() {
       var child = debug.spawn('child1');
