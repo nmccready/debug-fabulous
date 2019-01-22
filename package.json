@@ -18,9 +18,12 @@
     "lazy-eval"
   ],
   "author": "Nicholas McCready",
+  "contributors": [
+    "Joe Ibershoff (https://github.com/zacronos)"
+  ],
   "license": "MIT",
   "dependencies": {
-    "debug": "3.X",
+    "debug": "^3.1",
     "memoizee": "0.4.X",
     "object-assign": "4.X"
   },
