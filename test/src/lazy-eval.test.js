@@ -1,4 +1,3 @@
-var expect = require('chai').expect;
 var hook = require('hook-std');
 var memwatch = require('node-memwatch');
 var debugFact = require('../../src/debugFabFactory')();
@@ -16,11 +15,11 @@ describe('lazy-eval', function () {
 
   var debug, unhook, date;
 
-  before(function(){
+  beforeEach(function(){
     date = Date.now();
   })
 
-  after(function(){
+  afterAll(function(){
     var hde = heapDiff.end();
     var change = hde.change;
     change.details = null;
@@ -34,7 +33,7 @@ describe('lazy-eval', function () {
   })
 
   describe('enabled', function () {
-    before(function () {
+    beforeEach(function () {
       debugFact.save('enabled');
       debugFact.enable(debugFact.load())
       debug = debugFact('enabled');
@@ -43,8 +42,8 @@ describe('lazy-eval', function () {
 
     it('handles functions', function (done) {
       unhook = hook.stderr(function (str) {
-        expect(str.match(/crap/)).to.be.ok;
-        expect(str.match(/enabled/)).to.be.ok;
+        expect(str.match(/crap/)).toBeTruthy;
+        expect(str.match(/enabled/)).toBeTruthy;
         done()
       });
       debug(function () {return 'crap';});
@@ -67,8 +66,8 @@ describe('lazy-eval', function () {
 
     it('normal', function (done) {
       unhook = hook.stderr(function (str) {
-        expect(str.match(/crap/)).to.be.ok;
-        expect(str.match(/enabled/)).to.be.ok;
+        expect(str.match(/crap/)).toBeTruthy;
+        expect(str.match(/enabled/)).toBeTruthy;
         done()
       });
       debug('crap');
@@ -77,7 +76,7 @@ describe('lazy-eval', function () {
   });
 
   describe('disabled', function () {
-    before(function () {
+    beforeEach(function () {
       debugFact.save(null);
       debugFact.enable(debugFact.load())
       debug = debugFact('disabled');
@@ -95,7 +94,7 @@ describe('lazy-eval', function () {
         return 'crap';
       });
       unhook();
-      expect(called).to.not.be.ok;
+      expect(called).toBeFalse();
     });
 
     it('normal', function () {
@@ -107,7 +106,7 @@ describe('lazy-eval', function () {
 
       debug('crap');
       unhook();
-      expect(called).to.not.be.ok;
+      expect(called).toBeFalse();
     });
   });
 

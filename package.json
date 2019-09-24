@@ -2,55 +2,50 @@
   "name": "debug-fabulous",
   "version": "1.2.0",
   "description": "visionmedia debug extensions rolled into one",
-  "main": "lib/index.js",
-  "module": "module/index.js",
-  "umd": "umd/index.js",
+  "keywords": [
+    "debug",
+    "lazy",
+    "lazy-eval"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://www.github.com/nmccready/debug-fabulous"
+  },
+  "license": "MIT",
+  "author": "Nicholas McCready",
+  "contributors": [
+    "Joe Ibershoff (https://github.com/zacronos)"
+  ],
   "files": [
     "lib",
     "src",
     "umd",
     "module"
   ],
+  "main": "lib/index.js",
+  "module": "module/index.js",
   "scripts": {
-    "lint": "eslint --ext .js,.ts,.tsx *.js src --color",
-    "mocha": "mocha",
-    "jest": "node -r esm ./node_modules/.bin/jest",
-    "postinstall:1": "yarn js-common-editorconfig-clone",
-    "postinstall:2": "yarn js-common-eslint-config-react-mono-clone && js-common-babel-config-clone",
-    "postinstall:3": "yarn js-common-prettierrc-clone && yarn js-common-eslint-config-mono-clone",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "docs:api:markdown": "yarn typedoc --theme markdown --exclude ./src/test --out ./docs/api ./src",
     "docs:api:website": "yarn typedoc --exclude ./src/test --out docs ./src",
+    "jest": "node -r esm ./node_modules/.bin/jest",
+    "lint": "eslint --ext .js,.ts,.tsx *.js src --color",
+    "mocha": "mocha",
+    "postinstall:1": "yarn js-common-editorconfig-clone",
+    "postinstall:2": "yarn js-common-eslint-config-react-mono-clone && js-common-babel-config-clone",
+    "postinstall:3": "yarn js-common-prettierrc-clone && yarn js-common-eslint-config-mono-clone",
     "prepare": "yarn postinstall:1 && yarn postinstall:2 && yarn postinstall:3 && yarn sort-package-json",
     "roll:it": "yarn rollup -c ./rollup.config.ts",
     "test": "yarn jest",
     "test:ci": "yarn lint && yarn test --coverage && yarn coveralls",
     "preversion": "yarn build"
   },
-  "repository": {
-    "type": "git",
-    "url": "http://www.github.com/nmccready/debug-fabulous"
-  },
-  "keywords": [
-    "debug",
-    "lazy",
-    "lazy-eval"
-  ],
-  "author": "Nicholas McCready",
-  "contributors": [
-    "Joe Ibershoff (https://github.com/zacronos)"
-  ],
-  "license": "MIT",
   "dependencies": {
     "debug": "^4",
     "memoizee": "0.4",
     "object-assign": "4"
   },
   "devDependencies": {
-    "JSONStream": "1.X",
-    "hook-std": "0.X",
-    "node-memwatch": "^1.0.1",
-    "@testing-library/react-hooks": "^2.0.1",
     "@znemz/js-common-babel-config": "^0.0.23",
     "@znemz/js-common-babel-config-clone": "^0.0.23",
     "@znemz/js-common-editorconfig-clone": "^0.0.23",
@@ -59,11 +54,14 @@
     "@znemz/js-common-gulp-monorepo-typescript": "^0.0.23",
     "@znemz/js-common-prettierrc-clone": "^0.0.23",
     "@znemz/react-extras-jest": "^1.1.0",
+    "JSONStream": "1.X",
     "bluebird": "^3.5.5",
     "coveralls": "^3.0.4",
     "del": "^4.1.1",
     "esm": "^3.2.22",
     "gulp-run": "^1.7.1",
+    "hook-std": "0.X",
+    "node-memwatch": "^1.0.1",
     "prettier": "^1.18.2",
     "react": "^16.8",
     "rollup": "^1.20.1",
@@ -75,5 +73,6 @@
   },
   "engines": {
     "node": ">= 8"
-  }
+  },
+  "umd": "umd/index.js"
 }

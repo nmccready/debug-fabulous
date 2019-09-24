@@ -1,5 +1,3 @@
-'use strict';
-
 const fs = require('fs');
 const JSONStream = require('JSONStream');
 const debug = require('debug')(require('../../package.json').name + ':perf');
