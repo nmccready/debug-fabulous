@@ -6,7 +6,7 @@ const debug = require('../../')
   .spawnable(require('../../package.json').name)
   .spawn('perf');
 
-var memwatch = require('memwatch-next');
+var memwatch = require('node-memwatch');
 var heapDiff = new memwatch.HeapDiff();
 
 let start = process.hrtime();

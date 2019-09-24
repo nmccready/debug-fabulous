@@ -1,7 +1,7 @@
 'use strict';
 var expect = require('chai').expect;
 var hook = require('hook-std');
-var memwatch = require('memwatch-next');
+var memwatch = require('node-memwatch');
 
 memwatch.on('leak', function(info) {
   console.log("LEAK");

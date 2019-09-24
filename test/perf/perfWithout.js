@@ -3,8 +3,8 @@
 const fs = require('fs');
 const JSONStream = require('JSONStream');
 const debug = require('debug')(require('../../package.json').name + ':perf');
-  
-var memwatch = require('memwatch-next');
+
+var memwatch = require('node-memwatch');
 var heapDiff = new memwatch.HeapDiff();
 
 let start = process.hrtime();

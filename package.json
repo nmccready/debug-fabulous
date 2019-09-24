@@ -23,16 +23,19 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "debug": "^3.1",
-    "memoizee": "0.4.X",
-    "object-assign": "4.X"
+    "debug": "^4",
+    "memoizee": "0.4",
+    "object-assign": "4"
   },
   "devDependencies": {
     "JSONStream": "1.X",
     "chai": "4.X",
     "eslint": "4.X",
     "hook-std": "0.X",
-    "memwatch-next": "0.3.X",
+    "node-memwatch": "^1.0.1",
     "mocha": "4.X"
+  },
+  "engines": {
+    "node": ">= 8"
   }
 }
