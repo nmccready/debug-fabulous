@@ -8,11 +8,6 @@ export default {
   input: 'src/index.ts',
   output: [
     {
-      file: pkg.main,
-      format: 'cjs',
-      sourceMap: true,
-    },
-    {
       file: pkg.umd,
       format: 'umd',
       sourceMap: true,
