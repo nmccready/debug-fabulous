@@ -14,6 +14,15 @@ const toExport = {
   },
   setupFilesAfterEnv: ['<rootDir>/node_modules/@znemz/react-extras-jest/lib/setup.js'],
   verbose: true,
+  collectCoverageFrom: [
+    'src/**/*.{ts,js}',
+    '!<rootDir>/node_modules/',
+    '!<rootDir>/lib/',
+    '!<rootDir>/umd/',
+    '!<rootDir>/config/',
+    '!<rootDir>/test/',
+  ],
+  testRegex: '(/test/.*(test|spec))\\.[jt]sx?$',
 };
 
 if (toNotIgnore.modules.length) {
