@@ -20,3 +20,17 @@ bower_components/
 
 package-lock.json
 crashes.json
+.history
+.editorconfig
+.prettierrc.js
+.eslint*
+.tmp
+babel.config.js
+*.lock
+
+docs/website/*.md
+docs/api_website
+dist
+lib
+module
+umd

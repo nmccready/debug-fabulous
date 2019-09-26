@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "noImplicitAny": false,
+    "module": "commonjs",
+    "target": "ES5",
+    "experimentalDecorators": true,
+    "sourceMap": false,
+    "declaration": true,
+    "noResolve": false,
+    "moduleResolution": "node",
+    "outDir": ".tmp"
+  }
+}

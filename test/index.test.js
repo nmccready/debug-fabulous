@@ -1,7 +1,5 @@
-'use strict';
-var expect = require('chai').expect;
 var hook = require('hook-std');
-var memwatch = require('memwatch-next');
+var memwatch = require('node-memwatch');
 
 memwatch.on('leak', function(info) {
   console.log("LEAK");
@@ -16,11 +14,11 @@ describe('index / spawn', function () {
 
   var rootDbg, unhook, date;
 
-  before(function(){
+  beforeEach(function(){
     date = Date.now();
   })
 
-  after(function(){
+  afterAll(function(){
     var hde = heapDiff.end();
     var change = hde.change;
     change.details = null;
@@ -35,19 +33,19 @@ describe('index / spawn', function () {
 
   describe('namespacing', function () {
     beforeEach(function () {
-      var origDebug = require('..')();
+      var origDebug = require('../src')();
       origDebug.save('root*');
       origDebug.enable(origDebug.load())
 
-      rootDbg = require('../').spawnable('root', origDebug);
+      rootDbg = require('../src').spawnable('root', origDebug);
       // console.log(rootDbg);
     })
 
     it('handles functions', function (done) {
       unhook = hook.stderr(function (str) {
-        expect(str).to.be.ok;
-        expect(str.match(/crap/)).to.be.ok;
-        expect(str.match(/root/)).to.be.ok;
+        expect(str).toBeDefined();
+        expect(str.match(/crap/)).toBeTruthy();
+        expect(str.match(/root/)).toBeTruthy();
         done()
       });
       rootDbg(function () {return 'crap';});
@@ -56,9 +54,9 @@ describe('index / spawn', function () {
 
     it('normal', function (done) {
       unhook = hook.stderr(function (str) {
-        expect(str).to.be.ok;
-        expect(str.match(/crap/)).to.be.ok;
-        expect(str.match(/root/)).to.be.ok;
+        expect(str).toBeTruthy;
+        expect(str.match(/crap/)).toBeTruthy;
+        expect(str.match(/root/)).toBeTruthy;
         done()
       });
       rootDbg('crap');
@@ -74,9 +72,9 @@ describe('index / spawn', function () {
 
       it('handles functions', function (done) {
         unhook = hook.stderr(function (str) {
-          expect(str).to.be.ok;
-          expect(str.match(/crap/)).to.be.ok;
-          expect(str.match(/root:child1/)).to.be.ok;
+          expect(str).toBeTruthy;
+          expect(str.match(/crap/)).toBeTruthy;
+          expect(str.match(/root:child1/)).toBeTruthy;
           done()
         });
         child1Dbg(function () {return 'crap';});
@@ -85,9 +83,9 @@ describe('index / spawn', function () {
 
       it('normal', function (done) {
         unhook = hook.stderr(function (str) {
-          expect(str).to.be.ok;
-          expect(str.match(/crap/)).to.be.ok;
-          expect(str.match(/root:child1/)).to.be.ok;
+          expect(str).toBeTruthy;
+          expect(str.match(/crap/)).toBeTruthy;
+          expect(str.match(/root:child1/)).toBeTruthy;
           done()
         });
         child1Dbg('crap');
@@ -109,15 +107,15 @@ describe('index / spawn', function () {
       describe('grandChild1', function(){
         var grandChild1;
 
-        before(function () {
+        beforeEach(function () {
           grandChild1 = child1Dbg.spawn('grandChild1')
         })
 
         it('handles functions', function (done) {
           unhook = hook.stderr(function (str) {
-            expect(str).to.be.ok;
-            expect(str.match(/crap/)).to.be.ok;
-            expect(str.match(/root:child1:grandChild1/)).to.be.ok;
+            expect(str).toBeTruthy;
+            expect(str.match(/crap/)).toBeTruthy;
+            expect(str.match(/root:child1:grandChild1/)).toBeTruthy;
             done()
           });
           grandChild1(function () {return 'crap';});
@@ -126,9 +124,9 @@ describe('index / spawn', function () {
 
         it('normal', function (done) {
           unhook = hook.stderr(function (str) {
-            expect(str).to.be.ok;
-            expect(str.match(/crap/)).to.be.ok;
-            expect(str.match(/root:child1:grandChild1/)).to.be.ok;
+            expect(str).toBeTruthy;
+            expect(str.match(/crap/)).toBeTruthy;
+            expect(str.match(/root:child1:grandChild1/)).toBeTruthy;
             done()
           });
           grandChild1('crap');
@@ -138,16 +136,16 @@ describe('index / spawn', function () {
         describe('greatGrandChild1', function(){
           var greatGrandChild1;
 
-          before(function () {
+          beforeEach(function () {
             greatGrandChild1 = grandChild1.spawn('greatGrandChild1')
             // console.log(greatGrandChild1)
           })
 
           it('handles functions', function (done) {
             unhook = hook.stderr(function (str) {
-              expect(str).to.be.ok;
-              expect(str.match(/crap/)).to.be.ok;
-              expect(str.match(/root:child1:grandChild1:greatGrandChild1/)).to.be.ok;
+              expect(str).toBeTruthy;
+              expect(str.match(/crap/)).toBeTruthy;
+              expect(str.match(/root:child1:grandChild1:greatGrandChild1/)).toBeTruthy;
               done()
             });
             greatGrandChild1(function () {return 'crap';});
@@ -156,9 +154,9 @@ describe('index / spawn', function () {
 
           it('normal', function (done) {
             unhook = hook.stderr(function (str) {
-              expect(str).to.be.ok;
-              expect(str.match(/crap/)).to.be.ok;
-              expect(str.match(/root:child1:grandChild1:greatGrandChild1/)).to.be.ok;
+              expect(str).toBeTruthy;
+              expect(str.match(/crap/)).toBeTruthy;
+              expect(str.match(/root:child1:grandChild1:greatGrandChild1/)).toBeTruthy;
               done()
             });
             greatGrandChild1('crap');
