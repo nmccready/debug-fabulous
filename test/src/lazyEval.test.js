@@ -1,11 +1,12 @@
 const hook = require('hook-std');
-const memwatch = require('node-memwatch');
+const memwatch = require('@znemz/node-memwatch');
 const debugFact = require('../../src/debugFabFactory')();
+/* eslint-disable no-console */
 
 memwatch.on('leak', (info) => {
   console.log('LEAK');
   console.log(info);
-  throw new Error('there is a LEAK');
+  console.error(new Error('there is a LEAK'));
   process.exit(500);
 });
 
@@ -20,7 +21,7 @@ describe('lazyEval', () => {
 
   afterAll(() => {
     const hde = heapDiff.end();
-    const change = hde.change;
+    const { change } = hde;
     change.details = null;
 
     console.log(
@@ -28,13 +29,13 @@ describe('lazyEval', () => {
         {
           before: hde.before,
           after: hde.after,
-          change: change,
+          change,
         },
         null,
         2
       )
     );
-    console.log('lazyEval.test.js Total time: ' + (Date.now() - date));
+    console.log(`lazyEval.test.js Total time:  ${Date.now() - date}`);
   });
 
   describe('enabled', () => {
@@ -61,7 +62,7 @@ describe('lazyEval', () => {
       // memory leak attempt
       for (let i = 0; i < 1000; i++) {
         debug = debugFact('enabled');
-        leakTest('leak' + i);
+        leakTest(`leak${i}`);
       }
 
       function leakTest(name) {

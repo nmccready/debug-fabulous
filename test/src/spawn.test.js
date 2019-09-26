@@ -63,7 +63,8 @@ describe('spawn', () => {
       const child1 = debug.spawn('child1').spawn('grand');
       const child2 = debug.spawn('child2').spawn('grand');
 
-      expect(child1).not.toEqual(child2); // resolved by noop scope level to be new on each spawn
+      // resolved by noop scope level to be new on each spawn
+      expect(child1).not.toEqual(child2);
       expect(child1.namespace).not.toEqual(child2.namespace);
       // resolved by not memoizeing spawn as `grand`
       // above matches for both child1 and child2 and memoizee has child1 cached

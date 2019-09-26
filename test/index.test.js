@@ -1,163 +1,179 @@
-var hook = require('hook-std');
-var memwatch = require('node-memwatch');
+const hook = require('hook-std');
+const memwatch = require('@znemz/node-memwatch');
+/* eslint-disable no-console */
 
-memwatch.on('leak', function(info) {
-  console.log("LEAK");
+memwatch.on('leak', (info) => {
+  console.log('LEAK');
   console.log(info);
-  throw new Error("there is a LEAK");
+  console.error(new Error('there is a LEAK'));
   process.exit(500);
 });
 
-var heapDiff = new memwatch.HeapDiff();
+const heapDiff = new memwatch.HeapDiff();
 
-describe('index / spawn', function () {
+describe('index / spawn', () => {
+  let rootDbg, unhook, date;
 
-  var rootDbg, unhook, date;
-
-  beforeEach(function(){
+  beforeEach(() => {
     date = Date.now();
-  })
+  });
 
-  afterAll(function(){
-    var hde = heapDiff.end();
-    var change = hde.change;
+  afterAll(() => {
+    const hde = heapDiff.end();
+    const { change } = hde;
     change.details = null;
 
-    console.log(JSON.stringify({
-      before: hde.before,
-      after: hde.after,
-      change: change
-    }, null, 2));
-    console.log("index.test.js Total time: " + (Date.now() - date));
-  })
+    console.log(
+      JSON.stringify(
+        {
+          before: hde.before,
+          after: hde.after,
+          change,
+        },
+        null,
+        2
+      )
+    );
+    console.log(`index.test.js Total time: ${Date.now() - date}`);
+  });
 
-  describe('namespacing', function () {
-    beforeEach(function () {
-      var origDebug = require('../src')();
+  describe('namespacing', () => {
+    beforeEach(() => {
+      const origDebug = require('../src')();
       origDebug.save('root*');
-      origDebug.enable(origDebug.load())
+      origDebug.enable(origDebug.load());
 
       rootDbg = require('../src').spawnable('root', origDebug);
       // console.log(rootDbg);
-    })
+    });
 
-    it('handles functions', function (done) {
-      unhook = hook.stderr(function (str) {
+    it('handles functions', (done) => {
+      unhook = hook.stderr((str) => {
         expect(str).toBeDefined();
         expect(str.match(/crap/)).toBeTruthy();
         expect(str.match(/root/)).toBeTruthy();
-        done()
+        done();
       });
-      rootDbg(function () {return 'crap';});
+      rootDbg(() => {
+        return 'crap';
+      });
       unhook();
     });
 
-    it('normal', function (done) {
-      unhook = hook.stderr(function (str) {
-        expect(str).toBeTruthy;
-        expect(str.match(/crap/)).toBeTruthy;
-        expect(str.match(/root/)).toBeTruthy;
-        done()
+    it('normal', (done) => {
+      unhook = hook.stderr((str) => {
+        expect(str).toBeTruthy();
+        expect(str.match(/crap/)).toBeTruthy();
+        expect(str.match(/root/)).toBeTruthy();
+        done();
       });
       rootDbg('crap');
       unhook();
     });
 
-    describe('child1', function(){
-      var child1Dbg;
+    describe('child1', () => {
+      let child1Dbg;
 
-      beforeEach(function () {
+      beforeEach(() => {
         child1Dbg = rootDbg.spawn('child1');
-      })
+      });
 
-      it('handles functions', function (done) {
-        unhook = hook.stderr(function (str) {
-          expect(str).toBeTruthy;
-          expect(str.match(/crap/)).toBeTruthy;
-          expect(str.match(/root:child1/)).toBeTruthy;
-          done()
+      it('handles functions', (done) => {
+        unhook = hook.stderr((str) => {
+          expect(str).toBeTruthy();
+          expect(str.match(/crap/)).toBeTruthy();
+          expect(str.match(/root:child1/)).toBeTruthy();
+          done();
         });
-        child1Dbg(function () {return 'crap';});
+        child1Dbg(() => {
+          return 'crap';
+        });
         unhook();
       });
 
-      it('normal', function (done) {
-        unhook = hook.stderr(function (str) {
-          expect(str).toBeTruthy;
-          expect(str.match(/crap/)).toBeTruthy;
-          expect(str.match(/root:child1/)).toBeTruthy;
-          done()
+      it('normal', (done) => {
+        unhook = hook.stderr((str) => {
+          expect(str).toBeTruthy();
+          expect(str.match(/crap/)).toBeTruthy();
+          expect(str.match(/root:child1/)).toBeTruthy();
+          done();
         });
         child1Dbg('crap');
         unhook();
       });
 
-      it('leak', function () {
+      it('leak', () => {
         // memory leak attempt
-        for(var i = 0; i < 1000;i++){
+        for (let i = 0; i < 1000; i++) {
           child1Dbg = rootDbg.spawn('child1');
-          leakTest('leakTest' + i);
+          leakTest(`leakTest${i}`);
         }
       });
 
       function leakTest(testName) {
-        child1Dbg(function () {return testName;});
+        child1Dbg(() => {
+          return testName;
+        });
       }
 
-      describe('grandChild1', function(){
-        var grandChild1;
+      describe('grandChild1', () => {
+        let grandChild1;
 
-        beforeEach(function () {
-          grandChild1 = child1Dbg.spawn('grandChild1')
-        })
+        beforeEach(() => {
+          grandChild1 = child1Dbg.spawn('grandChild1');
+        });
 
-        it('handles functions', function (done) {
-          unhook = hook.stderr(function (str) {
-            expect(str).toBeTruthy;
-            expect(str.match(/crap/)).toBeTruthy;
-            expect(str.match(/root:child1:grandChild1/)).toBeTruthy;
-            done()
+        it('handles functions', (done) => {
+          unhook = hook.stderr((str) => {
+            expect(str).toBeTruthy();
+            expect(str.match(/crap/)).toBeTruthy();
+            expect(str.match(/root:child1:grandChild1/)).toBeTruthy();
+            done();
           });
-          grandChild1(function () {return 'crap';});
+          grandChild1(() => {
+            return 'crap';
+          });
           unhook();
         });
 
-        it('normal', function (done) {
-          unhook = hook.stderr(function (str) {
-            expect(str).toBeTruthy;
-            expect(str.match(/crap/)).toBeTruthy;
-            expect(str.match(/root:child1:grandChild1/)).toBeTruthy;
-            done()
+        it('normal', (done) => {
+          unhook = hook.stderr((str) => {
+            expect(str).toBeTruthy();
+            expect(str.match(/crap/)).toBeTruthy();
+            expect(str.match(/root:child1:grandChild1/)).toBeTruthy();
+            done();
           });
           grandChild1('crap');
           unhook();
         });
 
-        describe('greatGrandChild1', function(){
-          var greatGrandChild1;
+        describe('greatGrandChild1', () => {
+          let greatGrandChild1;
 
-          beforeEach(function () {
-            greatGrandChild1 = grandChild1.spawn('greatGrandChild1')
+          beforeEach(() => {
+            greatGrandChild1 = grandChild1.spawn('greatGrandChild1');
             // console.log(greatGrandChild1)
-          })
+          });
 
-          it('handles functions', function (done) {
-            unhook = hook.stderr(function (str) {
-              expect(str).toBeTruthy;
-              expect(str.match(/crap/)).toBeTruthy;
-              expect(str.match(/root:child1:grandChild1:greatGrandChild1/)).toBeTruthy;
-              done()
+          it('handles functions', (done) => {
+            unhook = hook.stderr((str) => {
+              expect(str).toBeTruthy();
+              expect(str.match(/crap/)).toBeTruthy();
+              expect(str.match(/root:child1:grandChild1:greatGrandChild1/)).toBeTruthy();
+              done();
             });
-            greatGrandChild1(function () {return 'crap';});
+            greatGrandChild1(() => {
+              return 'crap';
+            });
             unhook();
           });
 
-          it('normal', function (done) {
-            unhook = hook.stderr(function (str) {
-              expect(str).toBeTruthy;
-              expect(str.match(/crap/)).toBeTruthy;
-              expect(str.match(/root:child1:grandChild1:greatGrandChild1/)).toBeTruthy;
-              done()
+          it('normal', (done) => {
+            unhook = hook.stderr((str) => {
+              expect(str).toBeTruthy();
+              expect(str.match(/crap/)).toBeTruthy();
+              expect(str.match(/root:child1:grandChild1:greatGrandChild1/)).toBeTruthy();
+              done();
             });
             greatGrandChild1('crap');
             unhook();
