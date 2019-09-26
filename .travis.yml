@@ -6,7 +6,9 @@ node_js:
   - 10
   - 8
 
-script: yarn test
+script:
+  - npm i -g yarn@1.17
+  - yarn test
 
 cache:
   yarn: true
