@@ -36,7 +36,7 @@
     "prepare": "yarn postinstall:1 && yarn postinstall:2 && yarn postinstall:3 && yarn sort-package-json",
     "roll:it": "yarn rollup -c ./rollup.config.ts",
     "test": "yarn lint && yarn jest",
-    "test:ci": "yarn test --coverage && yarn coveralls",
+    "test:ci": "yarn build && yarn test --coverage && yarn coveralls",
     "preversion": "yarn build"
   },
   "dependencies": {
