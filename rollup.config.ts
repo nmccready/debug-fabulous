@@ -1,4 +1,5 @@
 import typescript from 'rollup-plugin-typescript';
+import commonjs from 'rollup-plugin-commonjs';
 
 // @ts-ignore
 import pkg from './package.json';
@@ -23,5 +24,5 @@ export default {
       sourceMap: true,
     },
   ],
-  plugins: [typescript()],
+  plugins: [commonjs(), typescript()],
 };

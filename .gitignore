@@ -32,3 +32,5 @@ docs/website/*.md
 docs/api_website
 dist
 lib
+module
+umd

@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "jsx": "react",
     "esModuleInterop": true,
-    "removeComments": false,
+    "removeComments": true,
     "noLib": false,
     "emitDecoratorMetadata": true,
     "noImplicitAny": false,
