@@ -41,8 +41,7 @@
   },
   "dependencies": {
     "debug": "^4",
-    "memoizee": "0.4",
-    "object-assign": "4"
+    "memoizee": "0.4"
   },
   "devDependencies": {
     "@types/debug": "^4",
