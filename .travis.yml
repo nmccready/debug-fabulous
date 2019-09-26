@@ -8,7 +8,7 @@ node_js:
 
 script:
   - npm i -g yarn@1.17
-  - yarn test
+  - yarn test:ci
 
 cache:
   yarn: true
