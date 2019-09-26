@@ -18,12 +18,9 @@
   ],
   "files": [
     "lib",
-    "src",
-    "umd",
-    "module"
+    "umd"
   ],
   "main": "lib/index.js",
-  "module": "module/index.js",
   "scripts": {
     "build": "yarn gulp default && yarn roll:it",
     "coveralls": "cat ./coverage/lcov.info | coveralls",

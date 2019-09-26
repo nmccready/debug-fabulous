@@ -13,11 +13,6 @@ export default {
       sourceMap: true,
       name: 'DebugFabulous',
     },
-    {
-      file: pkg.module,
-      format: 'esm',
-      sourceMap: true,
-    },
   ],
   plugins: [commonjs(), typescript()],
 };
