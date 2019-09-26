@@ -9,8 +9,12 @@ export interface DebugFabulous extends DebugLazy {
   spawnable: (_namespace: string, _debugFabFactory: Debug) => DebuggerExtSpawn;
 }
 
+export type LazyDebugFunc = () => string | any[];
+// where any[] is really... formatter: any, ...args: any[]
+
 export interface DebuggerExt extends Debugger {
-  (lazyFunc: () => string, formatter: any, ...args: any[]): void;
+  (lazyFunc: LazyDebugFunc): void;
+  (...args: any[]): void;
 }
 
 export interface DebuggerExtSpawn extends DebuggerExt {

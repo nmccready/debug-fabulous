@@ -1,10 +1,14 @@
 import { Debug, Debugger } from 'debug';
 import memoize from 'memoizee';
+import { LazyDebugFunc } from '../internals';
 
 const extend = (_debugger: Debugger) => {
   const wrapped = (formatter: any, ...args: any[]) => {
     if (typeof formatter === 'function') {
-      formatter = formatter();
+      const ret = (formatter as LazyDebugFunc)();
+      const toApply: any[] = Array.isArray(ret) ? ret : [ret];
+      // @ts-ignore
+      return _debugger(...toApply);
     }
     return _debugger(formatter, ...args);
   };
