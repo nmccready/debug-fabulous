@@ -93,7 +93,7 @@ describe('lazyEval', () => {
       });
     });
 
-    describe.only('lazy', () => {
+    describe('lazy', () => {
       it('basic', (done) => {
         unhook = hook.stderr((str) => {
           expect(str).toMatch(/crap/);
