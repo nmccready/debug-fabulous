@@ -17,7 +17,7 @@ const pkg = require('./package.json');
 const getDir = (fileName: string) => fileName.split('/')[0];
 
 gulp.task('clean', () =>
-  del(['.tmp', getDir(pkg.main), '*.log', getDir(pkg.umd), getDir(pkg.module)])
+  del(['.tmp', getDir(pkg.main), '*.log', getDir(pkg.umd)])
 );
 
 const build = (
