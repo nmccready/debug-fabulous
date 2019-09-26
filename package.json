@@ -25,6 +25,7 @@
   "main": "lib/index.js",
   "module": "module/index.js",
   "scripts": {
+    "build": "yarn rollup -c ./rollup.config.ts",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "docs:api:markdown": "yarn typedoc --theme markdown --exclude ./src/test --out ./docs/api ./src",
     "docs:api:website": "yarn typedoc --exclude ./src/test --out docs ./src",
@@ -35,7 +36,6 @@
     "postinstall:2": "yarn js-common-eslint-config-react-mono-clone && js-common-babel-config-clone",
     "postinstall:3": "yarn js-common-prettierrc-clone && yarn js-common-eslint-config-mono-clone",
     "prepare": "yarn postinstall:1 && yarn postinstall:2 && yarn postinstall:3 && yarn sort-package-json",
-    "roll:it": "yarn rollup -c ./rollup.config.ts",
     "test": "yarn lint && yarn jest",
     "test:ci": "yarn test --coverage && yarn coveralls",
     "preversion": "yarn build"
