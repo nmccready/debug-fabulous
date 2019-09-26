@@ -1,5 +1,5 @@
 import _fabulous from './debugFabFactory';
-import spawnable from './spawn';
+import spawnable from './extensions/spawn';
 import { DebugFabulous } from './internals';
 export * from './internals';
 
