@@ -1,4 +1,4 @@
-# debug-fabulous [![NPM version][npm-image]][npm-url] [![build status][travis-image]][travis-url]
+# debug-fabulous [![NPM version][npm-image]][npm-url] [![build status][travis-image]][travis-url] [![Test coverage][coveralls-image]][coveralls-url]
 
 ## Install
 
@@ -35,7 +35,9 @@ var debug = require('')();
 // debug.save('namespace');
 // debug.enable(debug.load())
 debug = debug('namespace'); // debugger in the namespace
-debug(function(){return 'something to log' + someLargeHarryString;});
+debug(function() {
+  return 'something to log' + someLargeHarryString;
+});
 debug(() => 'something to log ${someLargeHarryString}');
 debug('small out'); // prints namespace small out
 var childDbg = debug.spawn('child'); // debugger in the namespace:child
@@ -48,3 +50,5 @@ grandChildDbg('small out'); // prints namespace:child:grandChild small out
 [npm-url]: https://www.npmjs.com/package/debug-fabulous
 [travis-image]: https://img.shields.io/travis/nmccready/debug-fabulous.svg
 [travis-url]: https://travis-ci.org/nmccready/debug-fabulous
+[coveralls-image]: https://coveralls.io/repos/github/nmccready/debug-fabulous/badge.svg
+[coveralls-url]: https://coveralls.io/github/nmccready/debug-fabulous?branch=master
