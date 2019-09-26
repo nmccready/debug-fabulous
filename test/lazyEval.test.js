@@ -1,16 +1,11 @@
-const hook = require('hook-std');
-const memwatch = require('@znemz/node-memwatch');
-const debugFact = require('../../src/debugFabFactory')();
+import hook from 'hook-std';
+import config from 'config';
+import watchLeaks from './helpers/watchLeaks';
+
+const debugFact = require('../src/debugFabFactory')();
+
 /* eslint-disable no-console */
-
-memwatch.on('leak', (info) => {
-  console.log('LEAK');
-  console.log(info);
-  console.error(new Error('there is a LEAK'));
-  process.exit(500);
-});
-
-const heapDiff = new memwatch.HeapDiff();
+const heapDiff = watchLeaks();
 
 describe('lazyEval', () => {
   let debug, unhook, date;
@@ -60,7 +55,7 @@ describe('lazyEval', () => {
 
     it('leak', () => {
       // memory leak attempt
-      for (let i = 0; i < 1000; i++) {
+      for (let i = 0; i < config.get('tests.leak.iterations'); i++) {
         debug = debugFact('enabled');
         leakTest(`leak${i}`);
       }

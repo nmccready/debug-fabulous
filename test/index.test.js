@@ -1,15 +1,9 @@
-const hook = require('hook-std');
-const memwatch = require('@znemz/node-memwatch');
+import hook from 'hook-std';
+import config from 'config';
+import watchLeaks from './helpers/watchLeaks';
+
 /* eslint-disable no-console */
-
-memwatch.on('leak', (info) => {
-  console.log('LEAK');
-  console.log(info);
-  console.error(new Error('there is a LEAK'));
-  process.exit(500);
-});
-
-const heapDiff = new memwatch.HeapDiff();
+const heapDiff = watchLeaks();
 
 describe('index / spawn', () => {
   let rootDbg, unhook, date;
@@ -104,7 +98,7 @@ describe('index / spawn', () => {
 
       it('leak', () => {
         // memory leak attempt
-        for (let i = 0; i < 1000; i++) {
+        for (let i = 0; i < config.get('tests.leak.iterations'); i++) {
           child1Dbg = rootDbg.spawn('child1');
           leakTest(`leakTest${i}`);
         }

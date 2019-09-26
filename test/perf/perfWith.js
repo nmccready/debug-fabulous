@@ -1,7 +1,7 @@
 const fs = require('fs');
 const JSONStream = require('JSONStream');
 const memwatch = require('@znemz/node-memwatch');
-const debug = require('../../')
+const debug = require('../../lib')
   .spawnable(require('../../package.json').name)
   .spawn('perf');
 
@@ -24,10 +24,10 @@ function endTest() {
   change.details = null;
 
   console.log(`change.size: ${change.size}`);
-  console.log(`perfWithout.js Total time: ${elapsedTime()}`);
+  console.log(`perfWith.js Total time: ${elapsedTime()}`);
 }
 
-fs.createReadStream(`${__dirname}/crashes.json'`, { encoding: 'utf8' })
+fs.createReadStream(`${__dirname}/crashes.json`, { encoding: 'utf8' })
   .pipe(JSONStream.stringify())
   .on('data', (json) => {
     debug(() => json.length);
