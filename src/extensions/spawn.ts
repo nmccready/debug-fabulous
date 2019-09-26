@@ -3,7 +3,7 @@ import { DebuggerExtSpawn, DebugFabulous } from '../internals';
 
 export default function spawnFactory(
   namespace: string = '',
-  debugFabFactory: DebugFabulous = require('./debugFabFactory')()
+  debugFabFactory: DebugFabulous = require('../debugFabFactory')()
 ): DebuggerExtSpawn {
   function createDebugger(base: string = '', ns: string = ''): DebuggerExtSpawn {
     const newNs = ns ? [base, ns].join(':') : base;

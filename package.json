@@ -36,8 +36,8 @@
     "postinstall:3": "yarn js-common-prettierrc-clone && yarn js-common-eslint-config-mono-clone",
     "prepare": "yarn postinstall:1 && yarn postinstall:2 && yarn postinstall:3 && yarn sort-package-json",
     "roll:it": "yarn rollup -c ./rollup.config.ts",
-    "test": "yarn jest",
-    "test:ci": "yarn lint && yarn test --coverage && yarn coveralls",
+    "test": "yarn lint && yarn jest",
+    "test:ci": "yarn test --coverage && yarn coveralls",
     "preversion": "yarn build"
   },
   "dependencies": {
@@ -70,7 +70,7 @@
     "sort-package-json": "^1.21.0",
     "typedoc": "^0.15.0",
     "typedoc-plugin-markdown": "^2.1.4",
-    "typescript": "^3.5.1"
+    "typescript": "3.5"
   },
   "engines": {
     "node": ">= 8"
