@@ -18,6 +18,7 @@ const extend = (_debugger: Debugger) => {
 
 const lazyEval = (debugInst: Debug) => {
   function debug(namespace) {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     function noop() {}
     const instance = debugInst(namespace);
     if (!instance.enabled) {

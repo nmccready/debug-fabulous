@@ -3,11 +3,11 @@ sudo: false
 language: node_js
 
 node_js:
+  - 12
   - 10
-  - 8
 
 script:
-  - npm i -g yarn@1.17
+  - npm i -g yarn@1.22
   - yarn test:ci
 
 cache:

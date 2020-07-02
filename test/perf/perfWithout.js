@@ -1,6 +1,6 @@
 const fs = require('fs');
 const JSONStream = require('JSONStream');
-const memwatch = require('@znemz/node-memwatch');
+const memwatch = require('@raghb1/node-memwatch');
 const debug = require('debug')(`${require('../../package.json').name}:perf`);
 /* eslint-disable no-console */
 

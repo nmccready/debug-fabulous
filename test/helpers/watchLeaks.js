@@ -1,4 +1,4 @@
-const memwatch = require('@znemz/node-memwatch');
+const memwatch = require('@raghb1/node-memwatch');
 /* eslint-disable no-console */
 
 const watchLeaks = () => {
