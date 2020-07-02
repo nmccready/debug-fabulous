@@ -16,11 +16,11 @@
   "contributors": [
     "Joe Ibershoff (https://github.com/zacronos)"
   ],
+  "main": "lib/index.js",
   "files": [
     "lib",
     "umd"
   ],
-  "main": "lib/index.js",
   "scripts": {
     "build": "yarn gulp default && yarn roll:it",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
@@ -30,8 +30,7 @@
     "jest": "node -r esm ./node_modules/.bin/jest",
     "lint": "eslint --ext .js,.ts,.tsx *.js src test --color",
     "mocha": "mocha",
-    "postinstall:1": "yarn js-common-editorconfig-clone",
-    "postinstall:2": "yarn js-common-eslint-config-react-mono-clone && js-common-babel-config-clone",
+    "postinstall:1": "yarn js-common-editorconfig-clone && yarn js-common-babel-config-clone",
     "postinstall:3": "yarn js-common-prettierrc-clone && yarn js-common-eslint-config-mono-clone",
     "prepare": "yarn postinstall:1 && yarn postinstall:2 && yarn postinstall:3 && yarn sort-package-json",
     "roll:it": "yarn rollup -c ./rollup.config.ts",
@@ -49,7 +48,6 @@
     "@znemz/js-common-babel-config-clone": "^0.0.23",
     "@znemz/js-common-editorconfig-clone": "^0.0.23",
     "@znemz/js-common-eslint-config-mono-clone": "^0.0.23",
-    "@znemz/js-common-eslint-config-react-mono-clone": "^0.0.23",
     "@znemz/js-common-gulp-monorepo-typescript": "^0.0.23",
     "@znemz/js-common-prettierrc-clone": "^0.0.23",
     "@znemz/node-memwatch": "^1.0.2",
