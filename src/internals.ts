@@ -15,6 +15,7 @@ export type LazyDebugFunc = () => string | any[];
 export interface DebuggerExt extends Debugger {
   (lazyFunc: LazyDebugFunc): void;
   (...args: any[]): void;
+  spawn: (ns: string) => DebuggerExt;
 }
 
 export interface DebuggerExtSpawn extends DebuggerExt {
