@@ -1,6 +1,6 @@
 const fs = require('fs');
 const JSONStream = require('JSONStream');
-const memwatch = require('@raghb1/node-memwatch');
+const memwatch = require('@biiaidt/node-memwatch');
 const debug = require('../../lib')
   .spawnable(require('../../package.json').name)
   .spawn('perf');

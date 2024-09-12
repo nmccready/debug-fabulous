@@ -21,12 +21,8 @@ bower_components/
 package-lock.json
 crashes.json
 .history
-.editorconfig
-.prettierrc.js
-.eslint*
 !.eslintrc.js
 .tmp
-babel.config.js
 *.lock
 
 docs/website/*.md
