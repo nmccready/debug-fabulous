@@ -50,7 +50,7 @@
     "@znemz/js-common-editorconfig-clone": "^0.0.23",
     "@znemz/js-common-eslint-config": "^0.2.1",
     "@znemz/js-common-gulp-monorepo-typescript": "^0.0.23",
-    "@znemz/js-common-prettierrc-clone": "^0.0.23",
+    "@znemz/js-common-prettierrc-clone": "^0.2.2",
     "@znemz/react-extras-jest": "^1.1.0",
     "JSONStream": "1.X",
     "bluebird": "^3.5.5",
