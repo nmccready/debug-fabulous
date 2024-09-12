@@ -47,7 +47,7 @@
     "@commitlint/config-conventional": "^19",
     "@raghb1/node-memwatch": "^3.0.1",
     "@types/debug": "^4",
-    "@znemz/js-common-babel-config": "^0.0.23",
+    "@znemz/js-common-babel-config": "^0.2.1",
     "@znemz/js-common-babel-config-clone": "^0.0.23",
     "@znemz/js-common-editorconfig-clone": "^0.0.23",
     "@znemz/js-common-eslint-config": "^0.2.1",
