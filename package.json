@@ -25,12 +25,11 @@
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "docs:api:markdown": "npx typedoc --theme markdown --exclude ./src/test --out ./docs/api ./src",
     "docs:api:website": "npx typedoc --exclude ./src/test --out docs ./src",
-    "jest": "npx jest",
     "lint": "npm run build && eslint --ext .js,.ts,.tsx *.js src test --color",
     "mocha": "mocha",
     "prepack": "npm run build",
     "prepare": "npx sort-package-json",
-    "test": "npm run build && npm run jest",
+    "test": "npm run build && npx jest ./test && npx jest ./integration",
     "test:ci": "npm run build && npm run test --coverage && npm run coveralls",
     "preversion": "npm run build"
   },

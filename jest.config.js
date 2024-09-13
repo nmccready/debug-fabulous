@@ -6,7 +6,7 @@ const toExport = {
   roots: ['<rootDir>'],
   transformIgnorePatterns: ['node_modules', '/<rootDir>/lib', '/<rootDir>/(?!src)'],
   verbose: true,
-  testRegex: '(/test/.*(test|spec))\\.[jt]sx?$',
+  testRegex: '(/(test|integration)/.*(test|spec))\\.[jt]sx?$',
 };
 
 if (toNotIgnore.modules.length) {
