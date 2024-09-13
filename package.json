@@ -27,7 +27,7 @@
     "docs:api:markdown": "npx typedoc --theme markdown --exclude ./src/test --out ./docs/api ./src",
     "docs:api:website": "npx typedoc --exclude ./src/test --out docs ./src",
     "jest": "npx jest",
-    "lint": "eslint --ext .js,.ts,.tsx *.js src test --color",
+    "lint": "npm run build && eslint --ext .js,.ts,.tsx *.js src test --color",
     "mocha": "mocha",
     "prepare": "npx sort-package-json",
     "test": "npm run build && npm run jest",
