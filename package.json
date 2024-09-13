@@ -29,7 +29,7 @@
     "mocha": "mocha",
     "prepack": "npm run build",
     "prepare": "npx sort-package-json",
-    "test": "npm run build && npx jest ./test && npx jest ./integration",
+    "test": "npm run build && npx jest",
     "test:ci": "npm run build && npm run test --coverage && npm run coveralls",
     "preversion": "npm run build"
   },
