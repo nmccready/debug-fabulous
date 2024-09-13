@@ -52,7 +52,7 @@
     "commitlint": "19",
     "config": "^3.2.2",
     "coveralls": "^3.0.4",
-    "del": "^4.1.1",
+    "del": "^7.1.0",
     "hook-std": "0.X",
     "jest": "^29.7.0",
     "prettier": "^1.18.2",
