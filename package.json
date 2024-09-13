@@ -18,8 +18,7 @@
   ],
   "main": "lib/index.js",
   "files": [
-    "lib",
-    "umd"
+    "lib"
   ],
   "scripts": {
     "build": "rm -rf lib && npx tsc",
