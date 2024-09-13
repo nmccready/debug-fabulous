@@ -1,4 +1,4 @@
-import debugFabAPI from '../src';
+const debugFabAPI = require('../lib');
 
 const origDebug = debugFabAPI();
 origDebug.save('root*');

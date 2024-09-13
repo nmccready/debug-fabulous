@@ -1,8 +1,8 @@
-import hook from 'hook-std';
-import config from 'config';
-import watchLeaks from './helpers/watchLeaks';
+const hook = require('hook-std');
+const config = require('config');
+const watchLeaks = require('./helpers/watchLeaks');
 
-const debugFact = require('../src/debugFabFactory')();
+const debugFact = require('../lib')();
 
 /* eslint-disable no-console */
 const heapDiff = watchLeaks();
@@ -131,7 +131,7 @@ describe('lazyEval', () => {
         return 'crap';
       });
       unhook();
-      expect(called).toBeFalse();
+      expect(called).toEqual(false);
     });
 
     it('normal', () => {
@@ -143,7 +143,7 @@ describe('lazyEval', () => {
 
       debug('crap');
       unhook();
-      expect(called).toBeFalse();
+      expect(called).toEqual(false);
     });
   });
 });

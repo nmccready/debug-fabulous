@@ -12,4 +12,4 @@ const watchLeaks = () => {
   return new memwatch.HeapDiff();
 };
 
-export default watchLeaks;
+module.exports = watchLeaks;

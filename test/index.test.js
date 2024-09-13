@@ -1,6 +1,6 @@
-import hook from 'hook-std';
-import config from 'config';
-import watchLeaks from './helpers/watchLeaks';
+const hook = require('hook-std');
+const config = require('config');
+const watchLeaks = require('./helpers/watchLeaks');
 
 /* eslint-disable no-console */
 const heapDiff = watchLeaks();
@@ -33,11 +33,11 @@ describe('index / spawn', () => {
 
   describe('namespacing', () => {
     beforeEach(() => {
-      const origDebug = require('../src')();
+      const origDebug = require('../lib')();
       origDebug.save('root*');
       origDebug.enable(origDebug.load());
 
-      rootDbg = require('../src').spawnable('root', origDebug);
+      rootDbg = require('../lib').spawnable('root', origDebug);
       // console.log(rootDbg);
     });
 
