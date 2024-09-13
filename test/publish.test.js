@@ -1,12 +1,12 @@
 const os = require('os');
-const del = require('del');
 
 const { exec } = require('child_process');
+const { rm } = require('fs/promises');
 
 const isWindows = os.platform() === 'win32';
 
 const cleanUp = async () => {
-  return del(['./tmp']);
+  return rm('./tmp', { recursive: true, force: true });
 };
 
 function makeTestPackage(cb) {
