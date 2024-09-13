@@ -3,8 +3,7 @@ set -e
 set -o pipefail
 
 mkdir -p ./tmp
-npm pack
-mv *.tgz ./tmp
+npm pack --pack-destination ./tmp
 tar xvzf tmp/*.tgz -C ./tmp
 
 exit 0
