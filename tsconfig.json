@@ -5,14 +5,14 @@
     "noLib": false,
     "emitDecoratorMetadata": true,
     "noImplicitAny": false,
-    "module": "ESNext",
+    "module": "CommonJS",
     "target": "ES2020",
     "experimentalDecorators": true,
     "declaration": true,
     "noResolve": false,
     "moduleResolution": "node",
-    "outDir": ".tmp",
+    "outDir": "lib",
     "allowJs": true,
   },
-  "exclude": ["node_modules", ".tmp", "jest.config.js"]
+  "include": ["src/**/*"]
 }
