@@ -47,7 +47,7 @@
     "@znemz/react-extras-jest": "1.5.1",
     "JSONStream": "1.X",
     "commitlint": "19",
-    "config": "^3.2.2",
+    "config": "^4.0.0",
     "coveralls": "^3.0.4",
     "hook-std": "0.X",
     "jest": "^29.7.0",
