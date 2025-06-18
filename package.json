@@ -42,7 +42,7 @@
     "@commitlint/cli": "^19",
     "@commitlint/config-conventional": "^19",
     "@types/debug": "^4",
-    "@types/jest": "^29.5.13",
+    "@types/jest": "^30.0.0",
     "@znemz/js-common-eslint-config": "^0.2.2",
     "@znemz/react-extras-jest": "1.5.1",
     "commitlint": "19",
