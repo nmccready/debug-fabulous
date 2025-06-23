@@ -51,7 +51,7 @@
     "hook-std": "0.X",
     "jest": "^29.7.0",
     "JSONStream": "1.X",
-    "prettier": "^1.18.2",
+    "prettier": "^3.6.0",
     "sort-package-json": "^3.0.0",
     "typescript": "^5.6.2"
   },
