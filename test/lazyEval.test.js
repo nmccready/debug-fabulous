@@ -1,37 +1,9 @@
 const hook = require('hook-std');
 const config = require('config');
-const watchLeaks = require('./helpers/watchLeaks');
-
 const debugFact = require('../lib')();
 
-/* eslint-disable no-console */
-const heapDiff = watchLeaks();
-
 describe('lazyEval', () => {
-  let debug, unhook, date;
-
-  beforeEach(() => {
-    date = Date.now();
-  });
-
-  afterAll(() => {
-    const hde = heapDiff.end();
-    const { change } = hde;
-    change.details = null;
-
-    console.log(
-      JSON.stringify(
-        {
-          before: hde.before,
-          after: hde.after,
-          change,
-        },
-        null,
-        2
-      )
-    );
-    console.log(`lazyEval.test.js Total time:  ${Date.now() - date}`);
-  });
+  let debug, unhook;
 
   describe('enabled', () => {
     beforeEach(() => {

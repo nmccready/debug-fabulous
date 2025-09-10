@@ -1,35 +1,8 @@
 const hook = require('hook-std');
 const config = require('config');
-const watchLeaks = require('./helpers/watchLeaks');
-
-/* eslint-disable no-console */
-const heapDiff = watchLeaks();
 
 describe('index / spawn', () => {
-  let rootDbg, unhook, date;
-
-  beforeEach(() => {
-    date = Date.now();
-  });
-
-  afterAll(() => {
-    const hde = heapDiff.end();
-    const { change } = hde;
-    change.details = null;
-
-    console.log(
-      JSON.stringify(
-        {
-          before: hde.before,
-          after: hde.after,
-          change,
-        },
-        null,
-        2
-      )
-    );
-    console.log(`index.test.js Total time: ${Date.now() - date}`);
-  });
+  let rootDbg, unhook;
 
   describe('namespacing', () => {
     beforeEach(() => {
