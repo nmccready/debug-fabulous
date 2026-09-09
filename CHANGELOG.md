@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.0.104](https://github.com/brickhouse-tech/debug-fabulous/compare/v2.0.103...v2.0.104) (2026-09-09)
+
+### Bug Fixes
+
+* **deps:** bump js-yaml from 4.3.1 to 4.3.2 ([23907d0](https://github.com/brickhouse-tech/debug-fabulous/commit/23907d035e97f3236bab5b771f032c9f79d5e14e))
 ## [2.0.103](https://github.com/brickhouse-tech/debug-fabulous/compare/v2.0.102...v2.0.103) (2026-09-09)
 ## [2.0.102](https://github.com/brickhouse-tech/debug-fabulous/compare/v2.0.101...v2.0.102) (2026-09-08)
 ## [2.0.101](https://github.com/brickhouse-tech/debug-fabulous/compare/v2.0.100...v2.0.101) (2026-09-03)
